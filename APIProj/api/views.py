@@ -10,6 +10,8 @@ from rest_framework.views import APIView
 from rest_framework import mixins
 from rest_framework import generics
 from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 
@@ -17,6 +19,8 @@ from rest_framework import viewsets
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
 '''
 class ArticleList(mixins.ListModelMixin,mixins.CreateModelMixin,generics.GenericAPIView):
