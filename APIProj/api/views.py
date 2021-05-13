@@ -9,9 +9,16 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import mixins
 from rest_framework import generics
+from rest_framework import viewsets
 # Create your views here.
 
 
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+'''
 class ArticleList(mixins.ListModelMixin,mixins.CreateModelMixin,generics.GenericAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
@@ -40,7 +47,7 @@ class ArticleDetails(mixins.RetrieveModelMixin,
         return self.destroy(request,id=id )
 
 
-
+'''
 
 
 '''
